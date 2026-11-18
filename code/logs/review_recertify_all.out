@@ -1,0 +1,67 @@
+n=3: float solution found (trial archived), max|F|=1.11e-16, cond(J)=1.29e+00, 0.0s
+n=3: Krawczyk box radius 1e-09, max|K-x~|=4.646e-16  ->  CERTIFIED: unique exact zero in box  (0.0s)
+n=5: float solution found (trial archived), max|F|=2.22e-16, cond(J)=8.05e+01, 0.0s
+n=5: Krawczyk box radius 1e-09, max|K-x~|=5.619e-15  ->  CERTIFIED: unique exact zero in box  (0.0s)
+n=7: float solution found (trial archived), max|F|=2.64e-16, cond(J)=8.70e+00, 0.0s
+n=7: Krawczyk box radius 1e-09, max|K-x~|=1.360e-15  ->  CERTIFIED: unique exact zero in box  (0.0s)
+n=9: float solution found (trial archived), max|F|=9.89e-16, cond(J)=2.00e+01, 0.0s
+n=9: Krawczyk box radius 1e-09, max|K-x~|=5.107e-15  ->  CERTIFIED: unique exact zero in box  (0.0s)
+n=11: float solution found (trial archived), max|F|=4.51e-16, cond(J)=3.92e+01, 0.0s
+n=11: Krawczyk box radius 1e-09, max|K-x~|=3.553e-15  ->  CERTIFIED: unique exact zero in box  (0.0s)
+n=13: float solution found (trial archived), max|F|=1.98e-15, cond(J)=8.72e+01, 0.0s
+n=13: Krawczyk box radius 1e-09, max|K-x~|=9.263e-15  ->  CERTIFIED: unique exact zero in box  (0.0s)
+n=15: float solution found (trial archived), max|F|=1.41e-15, cond(J)=3.39e+01, 0.0s
+n=15: Krawczyk box radius 1e-09, max|K-x~|=9.963e-15  ->  CERTIFIED: unique exact zero in box  (0.0s)
+n=17: float solution found (trial archived), max|F|=3.58e-16, cond(J)=3.41e+01, 0.0s
+n=17: Krawczyk box radius 1e-09, max|K-x~|=6.560e-15  ->  CERTIFIED: unique exact zero in box  (0.0s)
+n=19: float solution found (trial archived), max|F|=8.41e-15, cond(J)=1.22e+02, 0.0s
+n=19: Krawczyk box radius 1e-09, max|K-x~|=4.204e-14  ->  CERTIFIED: unique exact zero in box  (0.0s)
+n=21: float solution found (trial archived), max|F|=2.98e-15, cond(J)=1.22e+02, 0.0s
+n=21: Krawczyk box radius 1e-09, max|K-x~|=5.123e-14  ->  CERTIFIED: unique exact zero in box  (0.3s)
+n=23: float solution found (trial archived), max|F|=1.79e-15, cond(J)=1.08e+02, 0.0s
+n=23: Krawczyk box radius 1e-09, max|K-x~|=3.152e-14  ->  CERTIFIED: unique exact zero in box  (0.3s)
+n=25: float solution found (trial archived), max|F|=2.57e-16, cond(J)=2.54e+02, 0.0s
+n=25: Krawczyk box radius 1e-09, max|K-x~|=6.686e-14  ->  CERTIFIED: unique exact zero in box  (0.5s)
+n=27: float solution found (trial archived), max|F|=1.34e-14, cond(J)=5.03e+02, 0.0s
+n=27: Krawczyk box radius 1e-09, max|K-x~|=1.696e-13  ->  CERTIFIED: unique exact zero in box  (0.4s)
+n=29: float solution found (trial archived), max|F|=1.20e-15, cond(J)=4.23e+02, 0.0s
+n=29: Krawczyk box radius 1e-09, max|K-x~|=1.325e-13  ->  CERTIFIED: unique exact zero in box  (0.5s)
+n=31: float solution found (trial archived), max|F|=2.57e-16, cond(J)=2.55e+02, 0.0s
+n=31: Krawczyk box radius 1e-09, max|K-x~|=9.280e-14  ->  CERTIFIED: unique exact zero in box  (0.6s)
+n=33: float solution found (trial archived), max|F|=1.20e-15, cond(J)=1.37e+02, 0.0s
+n=33: Krawczyk box radius 1e-09, max|K-x~|=7.574e-14  ->  CERTIFIED: unique exact zero in box  (0.9s)
+n=35: float solution found (trial archived), max|F|=2.39e-16, cond(J)=7.93e+02, 0.1s
+n=35: Krawczyk box radius 1e-09, max|K-x~|=3.756e-13  ->  CERTIFIED: unique exact zero in box  (1.0s)
+n=37: float solution found (trial archived), max|F|=2.78e-15, cond(J)=2.20e+02, 0.1s
+n=37: Krawczyk box radius 1e-09, max|K-x~|=1.275e-13  ->  CERTIFIED: unique exact zero in box  (0.5s)
+n=39: float solution found (trial archived), max|F|=8.34e-15, cond(J)=1.83e+02, 0.0s
+n=39: Krawczyk box radius 1e-09, max|K-x~|=1.386e-13  ->  CERTIFIED: unique exact zero in box  (0.6s)
+n=41: float solution found (trial archived), max|F|=2.26e-16, cond(J)=5.64e+02, 0.1s
+n=41: Krawczyk box radius 1e-09, max|K-x~|=3.365e-13  ->  CERTIFIED: unique exact zero in box  (1.1s)
+n=43: float solution found (trial archived), max|F|=1.21e-14, cond(J)=2.34e+02, 0.1s
+n=43: Krawczyk box radius 1e-09, max|K-x~|=1.840e-13  ->  CERTIFIED: unique exact zero in box  (1.2s)
+n=45: float solution found (trial archived), max|F|=2.32e-16, cond(J)=5.06e+02, 0.1s
+n=45: Krawczyk box radius 1e-09, max|K-x~|=3.970e-13  ->  CERTIFIED: unique exact zero in box  (1.6s)
+n=47: float solution found (trial archived), max|F|=1.48e-15, cond(J)=5.28e+02, 0.2s
+n=47: Krawczyk box radius 1e-09, max|K-x~|=3.566e-13  ->  CERTIFIED: unique exact zero in box  (2.1s)
+n=49: float solution found (trial archived), max|F|=4.54e-15, cond(J)=6.46e+02, 0.3s
+n=49: Krawczyk box radius 1e-09, max|K-x~|=5.444e-13  ->  CERTIFIED: unique exact zero in box  (2.8s)
+n=51: float solution found (trial archived), max|F|=5.16e-15, cond(J)=3.59e+02, 0.3s
+n=51: Krawczyk box radius 1e-09, max|K-x~|=3.357e-13  ->  CERTIFIED: unique exact zero in box  (3.1s)
+n=53: float solution found (trial archived), max|F|=1.15e-14, cond(J)=6.65e+02, 0.5s
+n=53: Krawczyk box radius 1e-09, max|K-x~|=5.442e-13  ->  CERTIFIED: unique exact zero in box  (3.6s)
+n=55: float solution found (trial archived), max|F|=2.26e-16, cond(J)=5.63e+02, 0.4s
+n=55: Krawczyk box radius 1e-09, max|K-x~|=5.458e-13  ->  CERTIFIED: unique exact zero in box  (3.2s)
+n=57: float solution found (trial archived), max|F|=8.40e-16, cond(J)=5.89e+02, 1.5s
+n=57: Krawczyk box radius 1e-09, max|K-x~|=6.198e-13  ->  CERTIFIED: unique exact zero in box  (4.6s)
+n=59: float solution found (trial archived), max|F|=4.94e-15, cond(J)=1.51e+03, 1.2s
+n=59: Krawczyk box radius 1e-09, max|K-x~|=1.630e-12  ->  CERTIFIED: unique exact zero in box  (5.3s)
+n=61: float solution found (trial archived), max|F|=2.83e-15, cond(J)=5.30e+02, 0.2s
+n=61: Krawczyk box radius 1e-09, max|K-x~|=6.108e-13  ->  CERTIFIED: unique exact zero in box  (4.0s)
+n=63: float solution found (trial archived), max|F|=2.50e-16, cond(J)=7.01e+02, 0.5s
+n=63: Krawczyk box radius 1e-09, max|K-x~|=9.658e-13  ->  CERTIFIED: unique exact zero in box  (5.9s)
+n=65: float solution found (trial archived), max|F|=1.82e-15, cond(J)=5.40e+02, 1.3s
+n=65: Krawczyk box radius 1e-09, max|K-x~|=6.430e-13  ->  CERTIFIED: unique exact zero in box  (5.8s)
+n=67: float solution found (trial archived), max|F|=4.56e-15, cond(J)=1.42e+03, 0.2s
+n=67: Krawczyk box radius 1e-09, max|K-x~|=1.888e-12  ->  CERTIFIED: unique exact zero in box  (5.6s)
+DONE

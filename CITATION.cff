@@ -1,0 +1,45 @@
+cff-version: 1.2.0
+message: If you use this preprint or the accompanying code, please cite it as below.
+title: "Orthogonal bases of symmetric unitary matrices in odd dimensions and the mixed-unitary rank of the symmetric Werner–Holevo channel"
+authors:
+  - family-names: Ma
+    given-names: Qiyuan
+    affiliation: Shanghai Jiao Tong University
+    orcid: "https://orcid.org/0009-0000-9532-0821"
+date-released: "2026-11-15"
+version: "1.1"
+license: CC-BY-4.0
+url: "https://hexagonmath.org/2611.00505v1"
+identifiers:
+  - type: doi
+    value: 10.5281/zenodo.24246318
+    description: Zenodo Version 1.1 record of this preprint and code
+  - type: url
+    value: "https://hexagonmath.org/2611.00505v1"
+    description: Hexagon preprint hexagon:2611.00505v1
+  - type: url
+    value: "https://airaxiv.com/papers/view/2611.0027/"
+    description: AiraXiv 2611.0027
+keywords:
+  - symmetric unitary matrices
+  - orthogonal bases
+  - mixed-unitary rank
+  - Werner–Holevo channel
+  - computer-assisted proof
+  - Krawczyk operator
+  - interval arithmetic
+preferred-citation:
+  type: generic
+  title: "Orthogonal bases of symmetric unitary matrices in odd dimensions and the mixed-unitary rank of the symmetric Werner–Holevo channel"
+  authors:
+    - family-names: Ma
+      given-names: Qiyuan
+      affiliation: Shanghai Jiao Tong University
+      orcid: "https://orcid.org/0009-0000-9532-0821"
+  year: 2026
+  month: 11
+  version: "1.1"
+  doi: 10.5281/zenodo.24246318
+  url: "https://hexagonmath.org/2611.00505v1"
+  license: CC-BY-4.0
+  notes: "Hexagon preprint hexagon:2611.00505v1; AiraXiv 2611.0027. The result covers odd n with 3 ≤ n ≤ 67, not all odd n. Preprint, not peer-reviewed."

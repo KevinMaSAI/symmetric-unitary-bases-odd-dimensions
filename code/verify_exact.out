@@ -1,0 +1,31 @@
+|mu2|^2 - 1 == 0 : True
+|v|^2 - 1 == 0 : True
+(1, 0) symmetric: True  unitary (M M^* = I): True
+(1, 1) symmetric: True  unitary (M M^* = I): True
+(1, 2) symmetric: True  unitary (M M^* = I): True
+(1, 3) symmetric: True  unitary (M M^* = I): True
+(1, 4) symmetric: True  unitary (M M^* = I): True
+(2, 0) symmetric: True  unitary (M M^* = I): True
+(2, 1) symmetric: True  unitary (M M^* = I): True
+(2, 2) symmetric: True  unitary (M M^* = I): True
+(2, 3) symmetric: True  unitary (M M^* = I): True
+(2, 4) symmetric: True  unitary (M M^* = I): True
+(3, 0) symmetric: True  unitary (M M^* = I): True
+(3, 1) symmetric: True  unitary (M M^* = I): True
+(3, 2) symmetric: True  unitary (M M^* = I): True
+(3, 3) symmetric: True  unitary (M M^* = I): True
+(3, 4) symmetric: True  unitary (M M^* = I): True
+Gram matrix tr(M_P M_Q^*) == 5*delta_PQ for all 120 pairs (incl. diagonal); failures = 0
+lemma check: S^2 = 4*sqrt5-11 True
+lemma check: C = w^2*conj(A) True
+lemma check: B = w^2*conj(B) True
+lemma check: B^2-4AC = (5 w S)^2 True
+lemma check: |A|^2 = 80-20 sqrt5 True
+lemma check: |B|^2 = 45+20 sqrt5 True
+lemma check: 2A*mu = -B + 5 w S True
+lemma check: A mu^2 + B mu + C = 0 True
+lemma check: C1 v + C0 = 0 True
+lemma check: |C0|^2 = |C1|^2 True
+numeric mu2 = (-0.8879145989088817+0.46000833149463666j)  v = (-0.9973288366692172-0.07304239555234843j)
+numeric rank of the 15 matrices as vectors in C^25: 15
+ALL EXACT CHECKS PASSED

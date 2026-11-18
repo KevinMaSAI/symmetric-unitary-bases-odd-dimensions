@@ -1,0 +1,10 @@
+# Tested on 2026-11-15 (Asia/Shanghai) with:
+#   Python 3.13.5
+#   python-flint 0.9.0 (FLINT 3.6.0, including Arb)
+#   numpy 2.5.4
+#   scipy 1.18.1
+#   sympy 1.14.0   (only needed for verify_sympy.py and reduce_eqs.py)
+python-flint==0.9.0
+numpy>=1.24
+scipy>=1.10
+sympy>=1.12
