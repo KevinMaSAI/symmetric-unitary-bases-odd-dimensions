@@ -1,0 +1,6 @@
+n=53: Krawczyk box radius 1e-09, max|K-x~|=5.442e-13  ->  CERTIFIED: unique exact zero in box  (10.8s)
+n=57: Krawczyk box radius 1e-09, max|K-x~|=6.198e-13  ->  CERTIFIED: unique exact zero in box  (34.2s)
+n=59: Krawczyk box radius 1e-09, max|K-x~|=1.630e-12  ->  CERTIFIED: unique exact zero in box  (163.6s)
+n=63: Krawczyk box radius 1e-09, max|K-x~|=9.658e-13  ->  CERTIFIED: unique exact zero in box  (35.6s)
+n=65: Krawczyk box radius 1e-09, max|K-x~|=6.430e-13  ->  CERTIFIED: unique exact zero in box  (39.0s)
+n=67: Krawczyk box radius 1e-09, max|K-x~|=1.888e-12  ->  CERTIFIED: unique exact zero in box  (42.9s)

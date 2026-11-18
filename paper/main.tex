@@ -1,0 +1,442 @@
+\documentclass[11pt]{amsart}
+\usepackage[margin=1.1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{booktabs}
+\usepackage[colorlinks,linkcolor=black,citecolor=black,urlcolor=blue]{hyperref}
+\usepackage{url}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem*{krawczyk}{Krawczyk's theorem}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\tr}{\operatorname{tr}}
+\newcommand{\Sym}{\mathcal{S}}
+\newcommand{\ip}[2]{\langle #1,#2\rangle}
+
+\title[Symmetric unitary orthogonal bases in odd dimensions]{Orthogonal bases of symmetric unitary matrices in odd dimensions and the mixed-unitary rank of the symmetric Werner--Holevo channel}
+\author{Qiyuan Ma}
+\date{}
+\makeatletter
+\def\@setauthors{\begingroup\centering\normalfont
+{\Large Qiyuan Ma\par}\vspace{2pt}
+{\large Shanghai Jiao Tong University\par}\vspace{2pt}
+{\large\href{mailto:mqyqwerty@sjtu.edu.cn}{mqyqwerty@sjtu.edu.cn}\par}\vspace{2pt}
+{\large ORCID: \href{https://orcid.org/0009-0000-9532-0821}{0009-0000-9532-0821}\par}\vspace{10pt}
+{\Large November 15, 2026\par}\vspace{2pt}
+{\large Research preprint, version 1.0\par}
+\endgroup}
+\makeatother
+
+\begin{document}
+
+\begin{abstract}
+Let $\Sym_n$ denote the space of complex symmetric $n\times n$ matrices with the Hilbert--Schmidt inner product. Girard, Leung, Levick, Li, Paulsen, Poon and Watrous showed that the symmetric Werner--Holevo channel on $M_n$ has minimal mixed-unitary rank $\binom{n+1}{2}$ if and only if $\Sym_n$ admits an orthogonal basis consisting of unitary matrices. They established this for even $n$ and for $n=3$, and conjectured it for all odd $n$; Levick and Rahaman settled the case of primes $n\equiv 7 \pmod 8$.
+We introduce a family of symmetric unitaries (``chirped circulants'') for odd $n$ and prove that, for this family, the pairwise orthogonality conditions reduce exactly to a square system of $\frac{n^2-1}{4}$ real equations in as many unknown phases.
+Using this reduction we give (i) a fully explicit basis for $n=5$, with all entries in an explicit degree-$8$ number field and an exact-arithmetic verification, and (ii) a computer-assisted proof, based on the Krawczyk operator evaluated in Arb ball arithmetic, that a symmetric unitary orthogonal basis exists for every odd $n$ with $3\le n\le 67$. Consequently the conjecture of Girard et al.\ holds for all $n\le 68$. We also record several obstructions to natural approaches for general odd $n$, and a further reduction for prime $n$.
+\end{abstract}
+
+\maketitle
+
+\section{Introduction}
+
+For a positive integer $n$ let $\Sym_n=\{X\in M_n(\C): X^{\mathsf T}=X\}$, a complex vector space of dimension $\binom{n+1}{2}$, equipped with the Hilbert--Schmidt inner product $\ip{A}{B}=\tr(AB^*)$. The following question was asked on MathOverflow in 2018 \cite{MO316985}:
+
+\begin{quote}
+\emph{Does $\Sym_n$ admit an orthogonal basis consisting of unitary matrices?}
+\end{quote}
+
+The question has a quantum-information interpretation. The \emph{symmetric Werner--Holevo channel} \cite{WH02} is
+\[
+\Phi_0(X)=\frac{\tr(X)\,\mathbb{1}_n+X^{\mathsf T}}{n+1},\qquad X\in M_n .
+\]
+Its Choi rank is $\binom{n+1}{2}$, and its \emph{mixed-unitary rank} (the least number of unitaries in a decomposition $\Phi_0(X)=\sum_k p_kU_kXU_k^*$) is at least the Choi rank.
+
+\begin{theorem}[{\cite[Theorem~19]{GLL22}}]\label{thm:GLL}
+The channel $\Phi_0$ on $M_n$ has mixed-unitary rank $\binom{n+1}{2}$ if and only if $\Sym_n$ has an orthogonal basis consisting of unitary matrices.
+\end{theorem}
+
+(Theorem numbers for \cite{GLL22} refer to arXiv:2003.14405.) In \cite{GLL22} such bases are constructed for all even $n$ (Theorem~21 there) and for $n=3$ (Theorem~23). For odd $n$ only the upper bound $n(n+3)/2$ on the mixed-unitary rank is proved (Theorem~22 there). Based on numerical evidence, the authors conjecture that $\Phi_0$ has minimal mixed-unitary rank for every $n$. Numerical (non-rigorous) bases for odd $n$ up to $11$ were also reported in \cite{MO316985}.
+
+Levick and Rahaman \cite[Theorem~3.8, Corollary~3.12]{LR21} (numbering as in arXiv:2105.00975) extended a construction of Bravyi and Smolin. Using real equiangular projections obtained from a construction of Calderbank, Hardin, Rains, Shor and Sloane \cite{CHRSS99}, they settled the case of primes $n=p\equiv -1\pmod 8$. Below $70$ the odd values of $n$ covered by these results are $n=3,7,23,31,47$. We did not find a rigorous treatment of any other odd $n$ in the literature.\footnote{We searched arXiv, the citations of \cite{GLL22} (via Semantic Scholar) and MathOverflow (as of November 2026). This search is necessarily incomplete.}
+
+\subsection*{Results}
+For odd $n$ we introduce \emph{chirped circulants}: matrices $D_cCD_c$ with $C$ a symmetric circulant unitary and $D_c=\operatorname{diag}(\omega^{ca^2})$. From $\frac{n+1}{2}$ of them and the $n$ diagonal ``shifts'' $V\mapsto Z^tVZ^t$ we obtain $\binom{n+1}{2}$ symmetric unitaries.
+
+\begin{itemize}
+\item \textbf{Reduction.} We prove (Theorem~\ref{thm:reduction}) that these $\binom{n+1}{2}$ matrices are pairwise orthogonal if and only if $\binom{(n+1)/2}{2}$ explicit scalar quantities $E_{ij}$ vanish. After fixing a gauge, this is a square real system $F:\R^N\to\R^N$ with $N=\frac{n^2-1}{4}$.
+\item \textbf{$n=5$} (Theorem~\ref{thm:n5}). An explicit orthogonal basis of $\Sym_5$ by symmetric unitaries. All entries lie in the number field $\Q(\zeta_5,\sqrt{4\sqrt5-11})$. The proof is human-readable apart from two clearly marked polynomial identities. We also provide a complete exact-arithmetic verification.
+\item \textbf{$3\le n\le 67$} (Theorem~\ref{thm:main}). For every odd $n\le 67$ the square system has a solution. The proof is computer-assisted: it applies the Krawczyk operator \cite{Kra69,Moo77,Rum10}, evaluated rigorously in Arb midpoint--radius arithmetic \cite{Joh17}, to an approximate solution.
+\end{itemize}
+
+\begin{corollary}\label{cor:main}
+For every positive integer $n\le 68$, the space $\Sym_n$ has an orthogonal basis of unitary matrices. Equivalently, the symmetric Werner--Holevo channel on $M_n$ has mixed-unitary rank $\binom{n+1}{2}$.
+\end{corollary}
+
+\begin{proof}
+For $n=1$ the claim is trivial ($\Sym_1=\C$ with basis $\{1\}$). For even $n$ this is \cite[Theorem~21]{GLL22}; for odd $3\le n\le 67$ it is Theorem~\ref{thm:main}. Apply Theorem~\ref{thm:GLL}.
+\end{proof}
+
+The case of general odd $n$ remains open; see Section~\ref{sec:remarks} for a conjecture, obstructions and a reduction for prime $n$.
+
+\section{Chirped circulants and the reduction lemma}\label{sec:family}
+
+Throughout, $n$ is odd, $h=\frac{n-1}{2}$ and $m=h+1=\frac{n+1}{2}$. Indices are taken in $\Z_n$, $\omega=e^{2\pi i/n}$, and $2^{-1}=\frac{n+1}{2}$ denotes the inverse of $2$ in $\Z_n$. Let $Z=\operatorname{diag}(\omega^a)_{a\in\Z_n}$ and $D_c=\operatorname{diag}(\omega^{ca^2})_{a\in\Z_n}$ for $c\in\Z_n$.
+
+\begin{definition}
+A vector $\mu=(\mu_l)_{l\in\Z_n}\in\C^n$ is \emph{admissible} if $|\mu_l|=1$ and $\mu_{-l}=\mu_l$ for all $l$. For admissible $\mu$ put
+\[
+k_d=\frac1n\sum_{l\in\Z_n}\mu_l\,\omega^{ld}\qquad(d\in\Z_n),
+\]
+and let $C(\mu)=(k_{b-a})_{a,b}$ be the associated circulant.
+Given parameters $c_0,\dots,c_h\in\Z_n$ and admissible $\mu^{(0)},\dots,\mu^{(h)}$, define
+\[
+V^{(i)}=D_{c_i}\,C(\mu^{(i)})\,D_{c_i},\qquad\text{i.e.}\qquad V^{(i)}_{ab}=\omega^{c_i(a^2+b^2)}k^{(i)}_{b-a},
+\]
+and
+\[
+M_{i,t}=Z^tV^{(i)}Z^t,\qquad (M_{i,t})_{ab}=\omega^{t(a+b)}V^{(i)}_{ab}\qquad(0\le i\le h,\ t\in\Z_n).
+\]
+\end{definition}
+
+This gives $mn=\binom{n+1}{2}$ matrices.
+
+\begin{lemma}\label{lem:symunit}
+Each $M_{i,t}$ is symmetric and unitary.
+\end{lemma}
+
+\begin{proof}
+With $F=(\omega^{ja}/\sqrt n)_{j,a}$ we have $C(\mu)=F^*\operatorname{diag}(\mu)F$, so $C(\mu)$ is unitary. Since $\mu_{-l}=\mu_l$ we get $k_{-d}=k_d$, so $C(\mu)$ is symmetric. If $U$ is symmetric unitary and $D$ is diagonal unitary, then $DUD$ is symmetric unitary. Apply this twice.
+\end{proof}
+
+\begin{theorem}[Reduction]\label{thm:reduction}
+For $i,j\in\{0,\dots,h\}$ put
+\[
+E_{ij}=\sum_{d\in\Z_n}\omega^{(c_i-c_j)2^{-1}d^2}\,k^{(i)}_d\,\overline{k^{(j)}_d}.
+\]
+Then
+\[
+\ip{M_{i,t}}{M_{j,u}}=E_{ij}\sum_{s\in\Z_n}\omega^{(t-u)s+(c_i-c_j)2^{-1}s^2}
+\]
+and $E_{ii}=1$. Consequently the matrices $\{M_{i,t}\}$ are pairwise orthogonal if and only if $E_{ij}=0$ for all $0\le i<j\le h$. In that case $\ip{M_{i,t}}{M_{j,u}}=n\,\delta_{ij}\delta_{tu}$, and $\{M_{i,t}\}$ is an orthogonal basis of $\Sym_n$ consisting of symmetric unitaries.
+\end{theorem}
+
+\begin{proof}
+By definition
+\[
+\ip{M_{i,t}}{M_{j,u}}=\sum_{a,b}\omega^{(t-u)(a+b)}V^{(i)}_{ab}\overline{V^{(j)}_{ab}}=\sum_{s}\omega^{(t-u)s}G_{ij}(s),\qquad G_{ij}(s)=\sum_{a}V^{(i)}_{a,s-a}\overline{V^{(j)}_{a,s-a}}.
+\]
+Fix $s$. Since $n$ is odd, $a\mapsto d=s-2a$ is a bijection of $\Z_n$. With $b=s-a$ we get $a=2^{-1}(s-d)$, $b=2^{-1}(s+d)$, $b-a=d$, and $a^2+b^2=2^{-1}(s^2+d^2)$. Hence
+\[
+V^{(i)}_{a,s-a}=\omega^{c_i2^{-1}(s^2+d^2)}k^{(i)}_d,
+\qquad
+G_{ij}(s)=\omega^{(c_i-c_j)2^{-1}s^2}E_{ij}.
+\]
+This proves the displayed formula. By Parseval, $E_{ii}=\sum_d|k^{(i)}_d|^2=\frac1n\sum_l|\mu^{(i)}_l|^2=1$, so $\ip{M_{i,t}}{M_{i,u}}=\sum_s\omega^{(t-u)s}=n\delta_{tu}$.
+
+For $i\ne j$: if $E_{ij}=0$ the inner products vanish. Conversely, if $\ip{M_{i,t}}{M_{j,u}}=0$ for all $t,u$, then the discrete Fourier transform of $s\mapsto G_{ij}(s)$ vanishes. Hence $G_{ij}\equiv0$, and so $E_{ij}=0$.
+
+Finally, $mn=\dim\Sym_n$ pairwise orthogonal nonzero matrices form a basis.
+\end{proof}
+
+\begin{remark}[Square system]\label{rem:square}
+Multiplying $\mu^{(i)}$ by a unimodular constant multiplies $E_{ij}$ by a unimodular constant, so we may fix $\mu^{(i)}_0=1$. Write $\mu^{(i)}_l=e^{\mathrm i\theta^{(i)}_{r}}$ with $r=\min(l,n-l)$ and $\theta^{(i)}_0=0$. The unknowns are then $\theta=(\theta^{(i)}_r)_{0\le i\le h,\,1\le r\le h}\in\R^{mh}$. The conditions $\operatorname{Re}E_{ij}=\operatorname{Im}E_{ij}=0$ ($i<j$) are $m(m-1)=mh$ real equations. We obtain a smooth map
+\[
+F_n:\R^N\to\R^N,\qquad N=mh=\tfrac{n^2-1}{4},
+\]
+whose zeros yield orthogonal bases of $\Sym_n$ by symmetric unitaries.
+\end{remark}
+
+\begin{remark}[Unbiased-vector form]\label{rem:mub}
+Set $\rho_i(d)=\omega^{c_i2^{-1}d^2}k^{(i)}_d$. Then $E_{ij}=\ip{\rho_i}{\rho_j}_{\C^n}$. Hence the problem is equivalent to finding an orthonormal basis $\rho_0,\dots,\rho_h$ of the space of even functions on $\Z_n$ such that each $\rho_i$, after removing the chirp $\omega^{c_i2^{-1}d^2}$, has a Fourier transform of constant modulus. Equivalently, $\rho_i$ is unbiased with respect to the ``chirped Fourier basis'' $\{\omega^{c_i2^{-1}d^2+ld}/\sqrt n\}_{l}$.
+\end{remark}
+
+\section{An explicit basis for \texorpdfstring{$n=5$}{n=5}}\label{sec:n5}
+
+Let $\omega=e^{2\pi i/5}$, $\sqrt5=1+2(\omega+\omega^4)$, $\varphi=\frac{1+\sqrt5}{2}$, and
+\[
+S=\mathrm i\sqrt{11-4\sqrt5},\qquad S^2=4\sqrt5-11=8\omega+8\omega^4-7 .
+\]
+All quantities below lie in $K=\Q(\omega,S)$, a field of degree $8$ over $\Q$. On $K$, complex conjugation is the automorphism $\omega\mapsto\omega^4$, $S\mapsto -S$. Put
+\[
+A=6+4\omega+4\omega^3-4\omega^4,\quad
+B=2+5\omega+2\omega^2-2\omega^3-2\omega^4,\quad
+C=4\omega+6\omega^2-4\omega^3+4\omega^4,
+\]
+\[
+\mu=\frac{-B+5\omega S}{2A}
+=-\tfrac{3}{11}-\tfrac{5}{44}\omega+\tfrac{3}{11}\omega^2+\tfrac{7}{22}\omega^3
++S\Big(\tfrac{2}{11}+\tfrac{7}{44}\omega-\tfrac{2}{11}\omega^2-\tfrac{1}{22}\omega^3\Big)\approx-0.887915+0.460008\,\mathrm i ,
+\]
+\[
+C_1=(4\omega+2\omega^2+4\omega^3)+\mu(2-3\omega-2\omega^2-2\omega^4),\qquad
+C_0=(6\omega-2\omega^2-4\omega^3)+\mu(8+8\omega+2\omega^2+2\omega^4),
+\]
+and $v=-C_0/C_1$:
+\[
+v=-\tfrac{6}{11}-\tfrac{21}{44}\omega-\tfrac{9}{44}\omega^2-\tfrac{27}{44}\omega^3
++S\Big(\tfrac{4}{11}+\tfrac{25}{44}\omega+\tfrac{17}{44}\omega^2+\tfrac{7}{44}\omega^3\Big)\approx-0.997329-0.073042\,\mathrm i .
+\]
+The minimal polynomial of $\mu$ over $\Q$ is $176x^8+552x^7+428x^6-546x^5-1195x^4-546x^3+428x^2+552x+176$. It is not monic, so $\mu$ is not a root of unity.
+
+Let $(\mu_0,\dots,\mu_4)=(1,\omega,\mu,\mu,\omega)$, let $k_d=\frac15\sum_j\mu_j\omega^{jd}$, and let $J$ be the all-ones matrix. Define
+\[
+V^{(1)}=I+\tfrac{v-1}{5}J,\qquad V^{(2)}_{ab}=\omega^{2(a^2+b^2)}k_{b-a},\qquad V^{(3)}_{ab}=\omega^{3(a^2+b^2)}k_{3(b-a)},
+\]
+and $M_{i,t}=Z^tV^{(i)}Z^t$ for $i=1,2,3$ and $t\in\Z_5$.
+
+These are chirped circulants with $(c_1,c_2,c_3)=(0,2,3)$ (in this section the seeds are indexed $1,2,3$ instead of $0,1,2$). Here $V^{(1)}=C(\mu^{(1)})$ with $\mu^{(1)}=(v,1,1,1,1)$. The circulant $(k_{3(b-a)})_{a,b}$ equals $C(\mu^{(3)})$ with $\mu^{(3)}_l=\mu_{2l}$, i.e.\ $\mu^{(3)}=(1,\mu,\omega,\omega,\mu)$.
+
+\begin{theorem}\label{thm:n5}
+The $15$ matrices $M_{i,t}$ are symmetric unitaries and satisfy $\ip{M_{i,t}}{M_{j,u}}=5\,\delta_{ij}\delta_{tu}$. Hence they form an orthogonal basis of $\Sym_5$, and the symmetric Werner--Holevo channel on $M_5$ has mixed-unitary rank $15$.
+\end{theorem}
+
+The theorem can be verified directly: the script \texttt{verify\_exact.py} works in the ring $\Q[x]/(x^5-1)\,[S]/(S^2-\sigma)$ using rational arithmetic only. It checks symmetry, $MM^*=I$ for all $15$ matrices, and all $120$ Gram entries. The script \texttt{verify\_sympy.py} is an independent check via Gr\"obner reduction (see Section~\ref{sec:repro}).
+The proof below explains the structure and isolates the two polynomial identities that we checked by computer.
+
+\begin{proof}
+\emph{Step 1 ($|\mu|=1$).} Note that $C=\omega^2\overline A$ and $B=\omega^2\overline B$. Conjugating $p(z)=Az^2+Bz+C$ shows that $p(z)=0$ implies $p(1/\bar z)=0$, so the root set of $p$ is invariant under inversion in the unit circle.
+
+One computes
+\[
+B^2-4AC=25\,\omega^2(8\omega+8\omega^{-1}-7)=(5\omega S)^2\ne0 .
+\]
+Hence $\mu$ is a root of $p$, and the two roots are distinct. Moreover $|A|^2=80-20\sqrt5$ and $|B|^2=45+20\sqrt5$, so $|B|^2<4|A|^2$, i.e.\ $|B/A|<2$.
+
+Suppose a root $z$ had $|z|\ne1$. Then the other root is $1/\bar z$, and $|B/A|=|z+1/\bar z|=|z|+|z|^{-1}>2$, a contradiction. Thus $|\mu|=1$, and $\mu^{(2)},\mu^{(3)}$ are admissible.
+
+\emph{Step 2 ($|v|=1$).} \textbf{[Computer-checked identity]} In $K$ one has $C_0\overline{C_0}=C_1\overline{C_1}$ and $C_1\ne0$, hence $|v|=1$. Thus $\mu^{(1)}$ is admissible, and by Lemma~\ref{lem:symunit} all $M_{i,t}$ are symmetric unitaries.
+
+\emph{Step 3 (reduction).} By Theorem~\ref{thm:reduction} it suffices to show $E_{12}=E_{13}=E_{23}=0$. Here $k^{(1)}_d=y_d$, with $y_0=\frac{4+v}{5}$ and $y_d=\frac{v-1}5$ for $d\ne0$, and
+\[
+E_{12}=\sum_d y_d\,\omega^{-d^2}\overline{k_d},\qquad
+E_{13}=\sum_d y_d\,\omega^{d^2}\overline{k_{3d}},\qquad
+E_{23}=\sum_d\omega^{2d^2}k_d\overline{k_{3d}} .
+\]
+Substituting $d=2e$ in $E_{13}$ gives $3d=e$ and $d^2\equiv-e^2$, while $y_{2e}=y_e$; hence $E_{13}=E_{12}$.
+
+\textbf{[Computer-checked identity]} Expanding with $\bar\mu=\mu^{-1}$ and $\bar\omega=\omega^{-1}$ and reducing modulo $\Phi_5$ gives
+\[
+E_{12}=\frac{C_1v+C_0}{25\,\omega\,\mu},\qquad E_{23}=\frac{A\mu^2+B\mu+C}{25\,\omega\,\mu}.
+\]
+Both numerators vanish by the definitions of $\mu$ and $v$.
+\end{proof}
+
+\begin{remark}
+Replacing $S$ by $-S$ (the other root of $p$) gives a second basis; we checked this numerically. The two computer-checked identities are finite polynomial computations in $\Q(\omega)[S]$. They are verified by \texttt{verify\_exact.py} (the identity $|C_0|^2=|C_1|^2$, together with $\mu\bar\mu=v\bar v=1$) and by \texttt{reduce\_eqs.py} (the expansions of $E_{12},E_{23}$).
+\end{remark}
+
+\section{Odd \texorpdfstring{$n\le 67$}{n<=67}: a computer-assisted proof}\label{sec:cap}
+
+\begin{theorem}\label{thm:main}
+For every odd $n$ with $3\le n\le 67$ and the choice $c_i=i$ $(0\le i\le h)$, the system $F_n(\theta)=0$ of Remark~\ref{rem:square} has a solution. Consequently $\Sym_n$ has an orthogonal basis of $\binom{n+1}{2}$ symmetric unitary matrices.
+\end{theorem}
+
+\subsection{Method}
+We use the following classical result \cite{Kra69,Moo77}; see also \cite{Rum10}.
+
+\begin{krawczyk}
+Let $X\subset\R^N$ be a box, $F:X\to\R^N$ continuously differentiable, $\tilde x\in X$, and $Y\in\R^{N\times N}$. Let $\mathbf J$ be an interval matrix containing the Jacobian $F'(x)$ for every $x\in X$, and put
+\[
+K(X)=\tilde x-YF(\tilde x)+(I-Y\mathbf J)(X-\tilde x)
+\]
+(evaluated in interval arithmetic). If $K(X)\subseteq\operatorname{int}X$, then $F$ has exactly one zero in $X$.
+\end{krawczyk}
+
+For each $n$ we proceed as follows.
+\begin{enumerate}
+\item \emph{Approximate solution.} Starting from random phases, a Levenberg--Marquardt least-squares solve followed by five Newton steps gives $\tilde x\in\R^N$ in IEEE double precision, with $\max|F_n(\tilde x)|\lesssim10^{-14}$. The numbers $\tilde x_k$ are taken as exact binary rationals.
+\item \emph{Box.} $X=\tilde x+[-r,r]^N$ with $r=10^{-9}$ (rounded upward to Arb's radius format; the same radius is used for $X-\tilde x$).
+\item \emph{Rigorous enclosures.} Using Arb \cite{Joh17} through python-flint~0.9.0 \cite{pyflint}, at a working precision of $128$ bits, we compute an enclosure of $F_n(\tilde x)$ and an interval matrix $\mathbf J$ enclosing $F_n'(X)$:
+\begin{itemize}
+\item the roots of unity $\omega^k=\exp(\pi\mathrm i\cdot 2k/n)$ and the phases $e^{\mathrm i\theta}$ are evaluated as rigorous complex balls;
+\item the entries of $F_n'$ are given by the explicit formulas
+\[\partial k^{(i)}_d/\partial\theta^{(i)}_r=\tfrac{\mathrm i}{n}\textstyle\sum_{l:\,\min(l,n-l)=r}\mu^{(i)}_l\omega^{ld},\]
+combined by the product rule in $E_{ij}$.
+\end{itemize}
+\item \emph{Preconditioner.} $Y$ is the floating-point inverse of $F_n'(\tilde x)$, converted exactly to a ball matrix. Any real $Y$ is admissible in the theorem.
+\item \emph{Check.} We evaluate $K(X)$ in ball arithmetic and test $K(X)\subseteq\operatorname{int}X$ componentwise. In every case $\max_k|K(X)_k-\tilde x_k|$ (an upper bound computed in ball arithmetic) is at most $2\times10^{-12}$, far inside the radius $10^{-9}$.
+\end{enumerate}
+
+\subsection{Results}
+Table~\ref{tab:cert} lists, for each odd $n\le67$: the dimension $N=\frac{n^2-1}{4}$ of the system; the bound on $\max_k|K(X)_k-\tilde x_k|$; and the wall-clock time of \texttt{certify.py n -{}-from-center} (excluding Python start-up and imports; almost all of it is the interval phase) on an 8-core Intel Xeon virtual machine (single-threaded). The last column indicates whether the case was covered by \cite{GLL22,LR21} (``known'') or not (``new''; i.e.\ not covered by these papers and not found in our literature search). All $33$ cases are certified, which proves Theorem~\ref{thm:main}.
+
+\begin{table}[ht]
+\centering\small
+\caption{Krawczyk certification, box radius $r=10^{-9}$, precision $128$ bits. ``$\delta$'' $=\max_k|K(X)_k-\tilde x_k|$ (rigorous upper bound); ``s'' $=$ seconds.}\label{tab:cert}
+\begin{tabular}{rrlrl@{\qquad}rrlrl}
+\toprule
+$n$ & $N$ & $\delta$ & s & & $n$ & $N$ & $\delta$ & s & \\
+\midrule
+3 & 2 & $4.646\times10^{-16}$ & 0.0 & known & 37 & 342 & $1.275\times10^{-13}$ & 0.4 & new\\
+5 & 6 & $5.619\times10^{-15}$ & 0.0 & new & 39 & 380 & $1.386\times10^{-13}$ & 0.5 & new\\
+7 & 12 & $1.360\times10^{-15}$ & 0.0 & known & 41 & 420 & $3.365\times10^{-13}$ & 0.6 & new\\
+9 & 20 & $5.107\times10^{-15}$ & 0.0 & new & 43 & 462 & $1.840\times10^{-13}$ & 0.8 & new\\
+11 & 30 & $3.553\times10^{-15}$ & 0.0 & new & 45 & 506 & $3.970\times10^{-13}$ & 1.0 & new\\
+13 & 42 & $9.263\times10^{-15}$ & 0.0 & new & 47 & 552 & $3.566\times10^{-13}$ & 1.2 & known\\
+15 & 56 & $9.963\times10^{-15}$ & 0.0 & new & 49 & 600 & $5.444\times10^{-13}$ & 1.4 & new\\
+17 & 72 & $6.560\times10^{-15}$ & 0.0 & new & 51 & 650 & $3.357\times10^{-13}$ & 1.7 & new\\
+19 & 90 & $4.204\times10^{-14}$ & 0.0 & new & 53 & 702 & $5.442\times10^{-13}$ & 2.1 & new\\
+21 & 110 & $5.123\times10^{-14}$ & 0.0 & new & 55 & 756 & $5.458\times10^{-13}$ & 2.3 & new\\
+23 & 132 & $3.152\times10^{-14}$ & 0.1 & known & 57 & 812 & $6.198\times10^{-13}$ & 2.8 & new\\
+25 & 156 & $6.686\times10^{-14}$ & 0.1 & new & 59 & 870 & $1.630\times10^{-12}$ & 3.5 & new\\
+27 & 182 & $1.696\times10^{-13}$ & 0.1 & new & 61 & 930 & $6.108\times10^{-13}$ & 4.6 & new\\
+29 & 210 & $1.325\times10^{-13}$ & 0.1 & new & 63 & 992 & $9.658\times10^{-13}$ & 4.3 & new\\
+31 & 240 & $9.280\times10^{-14}$ & 0.2 & known & 65 & 1056 & $6.430\times10^{-13}$ & 4.9 & new\\
+33 & 272 & $7.574\times10^{-14}$ & 0.2 & new & 67 & 1122 & $1.888\times10^{-12}$ & 5.7 & new\\
+35 & 306 & $3.756\times10^{-13}$ & 0.3 & new & &&&&\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{proof}[Proof of Theorem~\ref{thm:main}]
+For each $n$ in Table~\ref{tab:cert} the inclusion $K(X)\subseteq\operatorname{int}X$ holds. By Krawczyk's theorem $F_n$ has a (unique) zero $\theta^\ast\in X$. By Remark~\ref{rem:square} and Theorem~\ref{thm:reduction}, the corresponding matrices $M_{i,t}$ form an orthogonal basis of $\Sym_n$ by symmetric unitaries.
+\end{proof}
+
+\subsection{Consistency checks}
+These checks are not part of the proof.
+\begin{itemize}
+\item The analytic Jacobian agrees with central finite differences to about $2.5\times10^{-10}$, and the ball Jacobian agrees with the floating-point one to about $2\times10^{-16}$ (checked for $n=7$).
+\item \emph{Negative control.} Shifting the centre by $10^{-6}$, so that the true zero lies outside the box, makes the script report ``not certified'' (checked for $n=13$).
+\item For every $n$ in Table~\ref{tab:cert}, all $\binom{n+1}{2}$ matrices were also assembled in floating point directly from the archived centre (without using the formula for $E_{ij}$). Their Gram matrix agrees with $nI$ to $5\times10^{-13}$, and symmetry and unitarity hold to $2\times10^{-14}$.
+\item The Jacobians at the solutions are well conditioned (e.g.\ $\operatorname{cond}F_n'(\tilde x)\le 8\times10^{2}$ for $n\le41$).
+\end{itemize}
+
+\section{Remarks, obstructions, and open problems}\label{sec:remarks}
+
+\subsection{General odd \texorpdfstring{$n$}{n}}
+In every case we tried, a handful of random starting points sufficed to find a nondegenerate zero of $F_n$. This suggests:
+
+\begin{conjecture}\label{conj:B}
+For every odd $n\ge3$, the system $F_n=0$ (with $c_i=i$) has a nondegenerate real solution. In particular $\Sym_n$ has an orthogonal basis of symmetric unitaries for every $n$.
+\end{conjecture}
+
+A natural approach would be a direct algebraic construction or a topological existence argument. We record several obstructions.
+
+\begin{enumerate}
+\item \emph{Equal chirp parameters fail.} Suppose all $c_i$ equal $c$. Let $\varphi_l(d)=\omega^{c2^{-1}d^2+ld}/\sqrt n$, and take the orthonormal basis $f_0=\varphi_0$, $f_l=(\varphi_l+\varphi_{-l})/\sqrt2$ ($1\le l\le h$) of the even functions. By Remark~\ref{rem:mub}, $|\ip{\rho_i}{f_0}|^2=1/n$ for every $i$. If $\rho_0,\dots,\rho_h$ were an orthonormal basis of the even functions, the matrix $(\ip{\rho_i}{f_l})_{i,l}$ would be unitary. Its $0$-th column would then have squared norm $m/n=\frac{n+1}{2n}\neq1$, a contradiction.
+\item \emph{Pure chirp spectra fail for prime $n=p$.} Suppose every $\mu^{(i)}_l=\omega^{\alpha_il^2}$ with $\alpha_i\in\Z_p$. If $\alpha_i\ne0$ then $k^{(i)}_d=\frac1p g(\alpha_i)\,\omega^{-(4\alpha_i)^{-1}d^2}$, where $g(\alpha)=\sum_l\omega^{\alpha l^2}$ is a quadratic Gauss sum with $|g(\alpha)|=\sqrt p$; if $\alpha_i=0$ then $k^{(i)}_d=\delta_{d,0}$. Hence each $E_{ij}$ is either a value $k^{(\cdot)}_0$ or its conjugate (modulus $p^{-1/2}$ or $1$), or equals $p^{-2}g(\alpha_i)\overline{g(\alpha_j)}\sum_d\omega^{\beta d^2}$ for some $\beta\in\Z_p$, of modulus $p^{-1}\cdot\sqrt p$ or $p^{-1}\cdot p$. In no case does $E_{ij}$ vanish.
+\item \emph{Tensor products do not close the problem.} Under $M_{n_1n_2}=M_{n_1}\otimes M_{n_2}$ one has $\Sym_{n_1n_2}=(\Sym_{n_1}\otimes\Sym_{n_2})\oplus(\mathcal K_{n_1}\otimes\mathcal K_{n_2})$, where $\mathcal K$ denotes antisymmetric matrices. Since antisymmetric matrices of odd size are singular, $\mathcal K_{n_i}$ contains no unitaries when $n_i$ is odd. So bases for odd $n_1,n_2$ do not directly yield one for $n_1n_2$.
+\item \emph{No degree argument.} $F_n$ is $2\pi$-periodic in each variable, so it induces a map from the compact torus $T^N$ to $\R^N$. Such a map is never surjective, so its degree is $0$: if $0$ is a regular value, the zeros on $T^N$ counted with the sign of $\det F_n'$ sum to $0$. Hence existence of zeros cannot be obtained from a global degree count alone.
+\end{enumerate}
+
+\subsection{A further reduction for prime \texorpdfstring{$n=p$}{n=p}}
+For $u\in\Z_p^*$ let $(P_u\rho)(d)=\rho(u^{-1}d)$. Since even functions are fixed by $P_{-1}$, $P_u$ depends only on the class of $u$ in $H=\Z_p^*/\{\pm1\}$, a group of order $h$. In the notation of Remark~\ref{rem:mub}:
+
+\begin{proposition}\label{prop:prime}
+Let $p$ be an odd prime. Take the chirp parameters $\{0\}\cup\{u^{-2}:u\in H\}=\{0\}\cup\mathrm{QR}_p$. Let $\rho_0=\delta_0+\frac{v-1}{p}\mathbf 1$ with $|v|=1$, and $\rho_{u^{-2}}=P_u\rho_1$, where $\rho_1(d)=\omega^{2^{-1}d^2}k(d)$ and $k$ has admissible spectrum. Then all $\rho_c$ are admissible for their chirp parameters. Moreover, the orthonormality conditions of Remark~\ref{rem:mub} reduce to
+\[
+\text{(A)}\quad \ip{P_u\rho_1}{\rho_1}=0\ \ (u\in H\setminus\{1\}),\qquad\text{(B)}\quad\ip{\rho_0}{\rho_1}=0 .
+\]
+\end{proposition}
+
+\begin{proof}
+First, $P_u\rho_1(d)=\omega^{u^{-2}2^{-1}d^2}k(u^{-1}d)$. The Fourier spectrum of $k\circ u^{-1}$ is a permutation of that of $k$, so it is again admissible. Next, $\rho_0$ corresponds to the circulant with spectrum $(v,1,\dots,1)$ and is $P_u$-invariant. Hence
+\[
+\ip{\rho_0}{P_u\rho_1}=\ip{P_{u^{-1}}\rho_0}{\rho_1}=\ip{\rho_0}{\rho_1}
+\quad\text{and}\quad
+\ip{P_u\rho_1}{P_{u'}\rho_1}=\ip{P_{u/u'}\rho_1}{\rho_1}.
+\]
+\end{proof}
+
+Up to gauge this is a square system with about $h+1$ real unknowns (namely $v$ and the phases of the spectrum of $k$). For $p\le 59$ we found nondegenerate numerical solutions; this is evidence, not proof. For $p=5$ and $p=7$ there are solutions (verified numerically to $60$ significant digits; we have not written out an exact proof) in which the spectrum of $k$ is a single chirp off the origin, $\mu_l=\omega^{al^2}$ ($l\ne0$), with $\mu_0$ free. For $p=7$ these have $\cos(\arg\mu_0)\in\{-\tfrac34,\tfrac18\}$, and for $p=5$ we get $\cos(\arg\mu_0)=\tfrac{13-5\sqrt5}{8}$.
+Numerically, this one-parameter family has no solutions for $11\le p\le 43$. A heuristic Weil-bound argument suggests that it fails for all large $p$. Coset-wise (Gauss-period) generalizations of index $2$ and $3$ produced no solutions in our tests ($p\le41$). A proof for infinitely many primes along these lines would need a genuinely new explicit family.
+
+\section{Reproducibility}\label{sec:repro}
+The ancillary files contain the following.
+\begin{itemize}
+\item \texttt{verify\_exact.py}: pure-Python exact verification of Theorem~\ref{thm:n5} (\texttt{fractions} only, about $1$\,s).
+\item \texttt{verify\_sympy.py}: an independent Gr\"obner-basis verification (about $50$\,s).
+\item \texttt{reduce\_eqs.py}: the expansions in Step~3.
+\item \texttt{certify.py}: the Krawczyk certification.
+\begin{itemize}
+\item \texttt{python3 certify.py n} searches for a solution and certifies it.
+\item \texttt{python3 certify.py n -{}-from-center} re-certifies the archived centre\\ \texttt{centers/cert\_sol\_n$n$.npy}, which is exactly the centre used for Table~\ref{tab:cert}.
+\end{itemize}
+\item \texttt{logs/}: the original logs and the run used for the table\\ (\texttt{recertify\_from\_centers.out}).
+\end{itemize}
+The certification relies on the correctness of Arb's ball arithmetic and of Krawczyk's theorem. Floating-point computations are used only to produce the centre $\tilde x$ and the preconditioner $Y$, neither of which needs to be accurate for the validity of the proof.
+
+\subsection*{Acknowledgements}
+The author used AI assistance in the literature search, in designing and running the computational experiments, in writing the accompanying verification and certification code, and in drafting the manuscript. The human author is solely responsible for verifying all results, for the correctness of the proofs and computations, and for the final text.
+
+\noindent\textit{Tools used:} Codex (OpenAI) and Claude (Anthropic), used as research and writing assistants. Specific version numbers were not recorded. AI is not listed as an author.
+
+% Optional reserved Zenodo DOI: after reserving a DOI on the Zenodo deposit form
+% (answer ``No'' to ``Do you already have a DOI for this upload?'', then click
+% ``Get a DOI now!''), uncomment the next line, replace XXXXXXX with the reserved
+% number, and recompile with ``tectonic -X compile main.tex''. Do not invent a DOI.
+% \noindent This version is archived at \url{https://doi.org/10.5281/zenodo.XXXXXXX}.
+
+% Bibliography generated from refs.bib with amsplain (inlined for arXiv)
+\providecommand{\bysame}{\leavevmode\hbox to3em{\hrulefill}\thinspace}
+\providecommand{\MR}{\relax\ifhmode\unskip\space\fi MR }
+% \MRhref is called by the amsart/book/proc definition of \MR.
+\providecommand{\MRhref}[2]{%
+  \href{http://www.ams.org/mathscinet-getitem?mr=#1}{#2}
+}
+\providecommand{\href}[2]{#2}
+\begin{thebibliography}{10}
+
+\bibitem{CHRSS99}
+A.~R. Calderbank, R.~H. Hardin, E.~M. Rains, P.~W. Shor, and N.~J.~A. Sloane,
+  \emph{A group-theoretic framework for the construction of packings in
+  {G}rassmannian spaces}, J. Algebraic Combin. \textbf{9} (1999), no.~2,
+  129--140.
+
+\bibitem{GLL22}
+Mark Girard, Debbie Leung, Jeremy Levick, Chi-Kwong Li, Vern Paulsen, Yiu~Tung
+  Poon, and John Watrous, \emph{On the mixed-unitary rank of quantum channels},
+  Comm. Math. Phys. \textbf{394} (2022), no.~2, 919--951, arXiv:2003.14405.
+
+\bibitem{Joh17}
+Fredrik Johansson, \emph{Arb: efficient arbitrary-precision midpoint-radius
+  interval arithmetic}, IEEE Trans. Comput. \textbf{66} (2017), no.~8,
+  1281--1292.
+
+\bibitem{Kra69}
+R.~Krawczyk, \emph{{N}ewton-{A}lgorithmen zur {B}estimmung von {N}ullstellen
+  mit {F}ehlerschranken}, Computing \textbf{4} (1969), no.~3, 187--201.
+
+\bibitem{LR21}
+Jeremy Levick and Mizanur Rahaman, \emph{An extension of {B}ravyi--{S}molin's
+  construction for {UMEB}s}, Quantum Inf. Process. \textbf{20} (2021), no.~11,
+  Paper No. 369, arXiv:2105.00975.
+
+\bibitem{MO316985}
+Luftbahnfahrer, \emph{Existence of orthogonal basis of symmetric $n\times n$
+  matrices, where each matrix is unitary?}, MathOverflow, question 316985,
+  2018, \url{https://mathoverflow.net/questions/316985}.
+
+\bibitem{Moo77}
+R.~E. Moore, \emph{A test for existence of solutions to nonlinear systems},
+  SIAM J. Numer. Anal. \textbf{14} (1977), no.~4, 611--615.
+
+\bibitem{Rum10}
+Siegfried~M. Rump, \emph{Verification methods: rigorous results using
+  floating-point arithmetic}, Acta Numer. \textbf{19} (2010), 287--449.
+
+\bibitem{pyflint}
+{The FLINT team}, \emph{python-flint: {P}ython bindings for {FLINT} (incl.\
+  {A}rb), version 0.9.0}, \url{https://github.com/flintlib/python-flint}, PyPI
+  package \texttt{python-flint}.
+
+\bibitem{WH02}
+R.~F. Werner and A.~S. Holevo, \emph{Counterexample to an additivity conjecture
+  for output purity of quantum channels}, J. Math. Phys. \textbf{43} (2002),
+  no.~9, 4353--4357.
+
+\end{thebibliography}
+
+
+\end{document}
